@@ -1,9 +1,9 @@
 package persegi
 
-func LuasPersegi(sisi int) int {
+func Luas(sisi int) int {
 	return sisi * sisi
 }
 
-func KelilingPersegi(sisi int) int {
+func Keliling(sisi int) int {
 	return sisi * 4
 }
