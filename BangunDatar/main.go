@@ -3,19 +3,27 @@ package main
 import (
 	"fmt"
 
-	persegi "github.com/rizkyadi487/learngo/lib/persegi"
-	segitiga "github.com/rizkyadi487/learngo/lib/segitiga"
+	geometri "github.com/rizkyadi487/learngo/lib/geometri"
 )
 
 func main() {
 
-	var sisi int
+	var sisi float64
+	var panjang float64
+	var lebar float64
 
 	fmt.Printf("Masukkan Sisi Persegi : ")
 	fmt.Scan(&sisi)
-	fmt.Printf("Luas Persegi adalah = %d\n", persegi.Luas(sisi))
-	fmt.Printf("Keliling Persegi adalah = %d\n", persegi.Keliling(sisi))
+	luas, keliling := geometri.Persegi(sisi)
+	fmt.Printf("Persegi dengan sisi %g mempunyai luas %g dan keliling %g\n", sisi, luas, keliling)
 
-	fmt.Printf("Luas Segitiga = %f\n", segitiga.Luas(0.5, 9.4))
-	fmt.Printf("Keliling Segitiga = %f\n", segitiga.Keliling(3, 2, 1))
+	fmt.Printf("Masukkan panjang dari persegi panjang :")
+	fmt.Scan(&panjang)
+	fmt.Printf("Masukkan lebar dari persegi panjang :")
+	fmt.Scan(&lebar)
+	fmt.Printf("Persegi panjang dengan panjang %g dan lebar %g\n", panjang, lebar)
+	luas, keliling = geometri.PersegiPanjang(panjang, lebar)
+	fmt.Printf("Luas Persegi Panjang : %g\n", luas)
+	fmt.Printf("Keliling Persegi Panjang : %g\n", keliling)
+
 }
