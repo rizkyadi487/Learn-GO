@@ -8,12 +8,12 @@ import (
 )
 
 func main() {
-	if len(os.Args) > 1 {
+	if len(os.Args) == 1 {
 		if os.Args[1] == "help" {
 			helpMsg()
-		} else {
-			conversion(os.Args[1], os.Args[2], os.Args[3])
 		}
+	} else if len(os.Args) == 4 {
+		conversion(os.Args[1], os.Args[2], os.Args[3])
 	} else {
 		errorMsg()
 	}
@@ -37,11 +37,18 @@ func conversion(v string, s string, c string) {
 		cmFormula(c, v)
 	case "m":
 		mFormula(c, v)
+	default:
+		errorMsg()
+		println("Uncategorized length unit")
 	}
 }
 
 func cmFormula(c string, v string) {
-	i, _ := strconv.ParseFloat(v, 64)
+	i, err := strconv.ParseFloat(v, 64)
+	if err != nil {
+		fmt.Println(v, "is not number")
+		return
+	}
 	switch c {
 	case "m":
 		m := math.Pow10(2)
@@ -52,7 +59,11 @@ func cmFormula(c string, v string) {
 }
 
 func mFormula(m string, v string) {
-	i, _ := strconv.ParseFloat(v, 64)
+	i, err := strconv.ParseFloat(v, 64)
+	if err != nil {
+		fmt.Println(v, "is not number")
+		return
+	}
 	switch m {
 	case "cm":
 		cm := math.Pow10(2)
