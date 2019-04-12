@@ -7,7 +7,20 @@ import (
 	"strconv"
 )
 
+const (
+	Millimeter         = Meter * 1e-3
+	Centimeter         = Meter * 1e-2
+	Decimeter          = Meter * 1e-1
+	Meter      float64 = 1e0
+	Decameter          = Meter * 1e1
+	Hectometer         = Meter * 1e2
+	Kilometer          = Meter * 1e3
+)
+
 func main() {
+
+	fmt.Printf("%.2f\n", Meter*9.0)
+
 	if len(os.Args) == 1 {
 		if os.Args[1] == "help" {
 			helpMsg()
